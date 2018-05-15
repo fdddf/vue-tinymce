@@ -4,6 +4,8 @@
 
 ## use
 
+`npm i @panhezeng/vue-tinymce -S`
+
 ```vue
 <script>
   const VueTinymce = () => import('@panhezeng/vue-tinymce')
