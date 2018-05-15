@@ -1,0 +1,53 @@
+{
+  "name": "@panhezeng/vue-tinymce",
+  "description": "A Vue component",
+  "version": "1.0.0",
+  "author": "潘何增 <panhezeng@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "keywords": [
+    "vuejs",
+    "vue component",
+    "tinymce",
+    "rich text editor"
+  ],
+  "homepage": "https://github.com/panhezeng/vue-tinymce.git#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panhezeng/vue-tinymce.git"
+  },
+  "files": [
+    "dist",
+    "src",
+    "package.json",
+    "README"
+  ],
+  "main": "dist/vue-tinymce.min.js",
+  "scripts": {
+    "dev:example": "webpack-dev-server --mode development --open --hot --config webpack.example.config.js",
+    "build:example": "webpack --mode production --config webpack.example.config.js",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "tinymce": "latest",
+    "vue": "^2.5.16"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "latest",
+    "vue-loader": "^15.0.10",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.1.2",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
