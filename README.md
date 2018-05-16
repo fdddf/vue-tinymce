@@ -29,8 +29,8 @@
     
     使用本组件而不是使用官方TinyMCE Vue组件的优势
     不用自己import TinyMCE的插件js，通过https://unpkg.com/tinymce@latest实现了同步最新版资源
-    本来打算把TinyMCE依赖都通过import加载，但是import skins/lightgray无法正常加载其依赖的图片等资源，比如插入媒体文件，无法显示Object.gif占位图，只能通过skin_url方式加载才正常
-    本组件使用的TinyMCE是latest版本，TinyMCE依赖的相关js和css等也是latest版本，没有太复杂的东西，放心使用，如果觉得不好的地方，可以fork自行修改，非常简单。
+    本打算把TinyMCE依赖都通过import加载，但是import skins/lightgray无法正常加载其依赖的图片等资源，比如插入音频视频文件，无法显示Object.gif占位图，只能通过skin_url方式才正常显示
+    本组件使用的TinyMCE是latest版本，TinyMCE依赖的相关js和css等也是latest版本，没有太复杂的东西，放心使用，如果觉得不好的地方，可以fork自行修改，非常简单
    
 ```vue
     props: {
@@ -55,7 +55,7 @@
         type: String,
         default: 'https://unpkg.com/tinymce@latest',
       },
-      // tinymce的init方法的config参数，本组件有默认设置，比如不要toolbar3，可以使用该组件时写上 :config="{toolbar3:''}"
+      // tinymce的init方法的config参数，本组件有默认设置，比如不要toolbar3，可以使用该组件时写上 :config="{toolbar2:''}"
       config: {
         type: Object,
         default () {

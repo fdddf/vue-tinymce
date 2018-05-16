@@ -32,7 +32,7 @@
         type: String,
         default: 'https://unpkg.com/tinymce@latest',
       },
-      // tinymce的init方法的config参数，本组件有默认设置，比如不要toolbar3，可以使用该组件时写上 :config="{toolbar3:''}"
+      // tinymce的init方法的config参数，本组件有默认设置，比如不要toolbar3，可以使用该组件时写上 :config="{toolbar2:''}"
       config: {
         type: Object,
         default () {
@@ -59,6 +59,7 @@
       this.configClone = Object.assign({
         branding: false,
         language: 'zh_CN',
+        language_url:'https://unpkg.com/@panhezeng/vue-tinymce@latest/src/langs/zh_CN.js',
         theme_url: `${this.url}/themes/modern/theme.js`,
         skin_url: `${this.url}/skins/lightgray`,
         menubar: false,
@@ -67,15 +68,10 @@
         external_plugins: {},
         plugins: 'code hr link textcolor colorpicker advlist lists contextmenu paste table image imagetools media preview',
         contextmenu: 'selectall copy paste inserttable',
-        toolbar1: 'code | undo redo | fontsizeselect fontselect | blockquote hr | removeformat link unlink pastetext preview',
+        toolbar1: 'code | undo redo | fontsizeselect fontselect | blockquote hr | removeformat link unlink pastetext preview | image media',
         toolbar2: 'bold italic underline strikethrough | forecolor backcolor | indent outdent | alignleft aligncenter alignright alignjustify | bullist numlist',
-        toolbar3: 'image media',
       }, this.config)
 
-      // 如果language是默认zh_CN，则加载简体中文语言包
-      if (!this.configClone.language_url && this.configClone.language === 'zh_CN') {
-        require('./langs/zh_CN.js')
-      }
       // 把配置的plugins转换为external_plugins的形式，使用unpgk cdn
       if (Object.prototype.toString.call(this.configClone.plugins) === '[object String]') {
         const plugins = this.configClone.plugins.match(/([\d\w]+)/gm)
