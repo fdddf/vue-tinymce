@@ -1,7 +1,7 @@
 {
   "name": "@panhezeng/vue-tinymce",
   "description": "A Vue component",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "潘何增 <panhezeng@gmail.com>",
   "license": "MIT",
   "private": false,
