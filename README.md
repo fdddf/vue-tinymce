@@ -24,11 +24,13 @@
 
     本来打算把原项目的自己封装的TinyMCE Vue组件换成官方的TinyMCE Vue组件，结果发现官方组件，如果不使用TinyMCE Cloud，并不比自己封装的好
     本组件的默认配置的toolbar相关主要是参考微信公众号的富文本编辑器的布局配置
-    其实原项目TinyMCE Vue组件几乎做得和微信公众号的富文本编辑器一样，图片音频视频资源管理是单独的侧边栏，实现的核心是TinyMCE editor的insertContent方法，并且依赖element ui
-    本组件默认语言中文language: 'zh_CN'
+    虽然原项目TinyMCE Vue组件几乎做得和微信公众号的富文本编辑器一样，图片音频视频资源管理是单独的侧边栏，实现的核心是TinyMCE editor的insertContent方法，并且依赖element ui
+    但是本组件只是简单封装，默认语言中文language: 'zh_CN'
+    
     使用本组件而不是使用官方TinyMCE Vue组件的优势
-    不用自己import TinyMCE的插件等js了，通过https://unpkg.com/tinymce@latest实现了同步最新版资源
+    不用自己import TinyMCE的插件js，通过https://unpkg.com/tinymce@latest实现了同步最新版资源
     本来打算把TinyMCE依赖都通过import加载，但是import skins/lightgray无法正常加载其依赖的图片等资源，比如插入媒体文件，无法显示Object.gif占位图，只能通过skin_url方式加载才正常
+    本组件使用的TinyMCE是latest版本，TinyMCE依赖的相关js和css等也是latest版本，没有太复杂的东西，放心使用，如果觉得不好的地方，可以fork自行修改，非常简单。
    
 ```vue
     props: {
