@@ -88,7 +88,7 @@
       this.$nextTick(() => {
         // 编辑器实例初始化
         this.configClone.target = this.$refs.editor
-        this.configClone.setup = (editor) => {
+        this.configClone.setup = editor => {
           if (Object.prototype.toString.call(this.config.setup) === '[object Function]') {
             this.config.setup(editor)
           }
