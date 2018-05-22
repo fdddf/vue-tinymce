@@ -9,13 +9,14 @@
 
 <script>
   const VueTinymce = () => import('../../dist/vue-tinymce.min')
+//  const VueTinymce = () => import('../../src')
 
   export default {
     name: 'App',
     components: {VueTinymce},
     data () {
       return {
-        content: '',
+        content: 'init content',
       }
     },
     created () {

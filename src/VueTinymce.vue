@@ -1,6 +1,6 @@
 <template>
   <div class="vue-tinymce-comp" :id="`vue-tinymce-${id}`">
-    <textarea :name="`vue-tinymce-content-${id}`" ref="editor" v-model="contentClone"></textarea>
+    <textarea :name="`vue-tinymce-content-${id}`" ref="editor"></textarea>
   </div>
 </template>
 <script>
@@ -43,14 +43,13 @@
     data () {
       return {
         editor: null,
-        contentClone: '',
         configClone: {},
       }
     },
     computed: {},
     watch: {
       content: {
-        handler (val, oldVal) { this.setContent() },
+        handler: 'setContent',
         immediate: true,
       },
     },
@@ -88,12 +87,12 @@
       this.$nextTick(() => {
         // 编辑器实例初始化
         this.configClone.target = this.$refs.editor
-        this.configClone.setup = editor => {
-          if (Object.prototype.toString.call(this.config.setup) === '[object Function]') {
-            this.config.setup(editor)
+        this.configClone.init_instance_callback = editor => {
+          if (Object.prototype.toString.call(this.config.init_instance_callback) === '[object Function]') {
+            this.config.init_instance_callback(editor)
           }
           this.editor = editor
-          this.setContent(true)
+          this.setContent()
           editor.on(this.updateEvent, this.contentChange)
         }
         tinymce.init(this.configClone)
@@ -107,20 +106,17 @@
       }
     },
     methods: {
-      setContent (force) {
-        // 如果组件内容和父组件传入的内容不一样，或者强制设置内容
-        if (this.contentClone !== this.content || force) {
-          this.contentClone = this.content
-          // 如果编辑器实例已经为真
-          if (this.editor) {
-            this.editor.setContent(this.contentClone)
-          }
+      setContent () {
+        // 如果编辑器实例已经为真，并且编辑器内容和父组件传入的内容不一样
+        if (this.editor && this.editor.getContent() !== this.content) {
+          this.editor.setContent(this.content)
         }
       },
       contentChange (e) {
         // 同步到父组件
-        this.contentClone = this.editor.getContent()
-        this.$emit('update:content', this.contentClone)
+        if (this.editor) {
+          this.$emit('update:content', this.editor.getContent())
+        }
       },
     },
   }
