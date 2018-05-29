@@ -43,7 +43,7 @@
     data () {
       return {
         editor: null,
-        configClone: {},
+        configInternal: {},
       }
     },
     computed: {},
@@ -55,7 +55,7 @@
     },
     created () {
       // 合并配置，把传入的配置和默认配置合并
-      this.configClone = Object.assign({
+      this.configInternal = Object.assign({
         branding: false,
         language: 'zh_CN',
         language_url: 'https://unpkg.com/@panhezeng/vue-tinymce@latest/src/langs/zh_CN.js',
@@ -73,21 +73,21 @@
       }, this.config)
 
       // 把配置的plugins转换为external_plugins的形式，使用unpgk cdn
-      if (Object.prototype.toString.call(this.configClone.plugins) === '[object String]') {
-        const plugins = this.configClone.plugins.match(/([\d\w]+)/gm)
+      if (Object.prototype.toString.call(this.configInternal.plugins) === '[object String]') {
+        const plugins = this.configInternal.plugins.match(/([\d\w]+)/gm)
         if (Object.prototype.toString.call(plugins) === '[object Array]') {
           plugins.forEach(value => {
-            this.configClone.external_plugins[value] = `${this.url}/plugins/${value}/plugin.js`
+            this.configInternal.external_plugins[value] = `${this.url}/plugins/${value}/plugin.js`
           })
         }
       }
-      this.configClone.plugins = ''
+      this.configInternal.plugins = ''
     },
     mounted () {
       this.$nextTick(() => {
         // 编辑器实例初始化
-        this.configClone.target = this.$refs.editor
-        this.configClone.init_instance_callback = editor => {
+        this.configInternal.target = this.$refs.editor
+        this.configInternal.init_instance_callback = editor => {
           if (Object.prototype.toString.call(this.config.init_instance_callback) === '[object Function]') {
             this.config.init_instance_callback(editor)
           }
@@ -95,7 +95,7 @@
           this.setContent()
           editor.on(this.updateEvent, this.contentChange)
         }
-        tinymce.init(this.configClone)
+        tinymce.init(this.configInternal)
       })
     },
     beforeDestroy () {
