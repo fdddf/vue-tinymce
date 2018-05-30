@@ -104,6 +104,7 @@
         this.editor.destroy()
         this.editor = null
       }
+      tinymce.remove()
     },
     methods: {
       setContent () {
