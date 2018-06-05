@@ -1,5 +1,6 @@
 <template>
   <div class="vue-tinymce-comp" :id="`vue-tinymce-${id}`">
+    {{JSON.stringify(config)}}
     <textarea :name="`vue-tinymce-content-${id}`" ref="editor"></textarea>
   </div>
 </template>
@@ -43,70 +44,103 @@
     data () {
       return {
         editor: null,
-        configInternal: {},
       }
     },
     computed: {},
     watch: {
+      config: {
+        handler: 'init',
+        immediate: true,
+        deep: true,
+      },
       content: {
         handler: 'setContent',
         immediate: true,
       },
     },
-    created () {
-      // 合并配置，把传入的配置和默认配置合并
-      this.configInternal = Object.assign({
-        branding: false,
-        language: 'zh_CN',
-        language_url: 'https://unpkg.com/@panhezeng/vue-tinymce@latest/src/langs/zh_CN.js',
-        theme_url: `${this.url}/themes/modern/theme.js`,
-        skin_url: `${this.url}/skins/lightgray`,
-        menubar: false,
-        fontsize_formats: '12px 13px 14px 15px 16px 18px 20px 24px',
-        font_formats: '微软雅黑="微软雅黑";苹方="苹方";宋体="宋体";黑体="黑体";仿宋="仿宋";楷体="楷体";隶书="隶书";幼圆="幼圆";Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Courier New=courier new,courier;Helvetica=helvetica;Symbol=symbol;Times New Roman=times new roman,times;Verdana=verdana,geneva;',
-        content_style: 'body, td, pre {font-family:"微软雅黑", "苹方", "宋体", Verdana, Arial, Helvetica, sans-serif;}',
-        external_plugins: {},
-        plugins: 'code hr link textcolor colorpicker advlist lists contextmenu paste table image imagetools media preview',
-        contextmenu: 'selectall copy paste inserttable',
-        toolbar1: 'code | undo redo | fontsizeselect fontselect | blockquote hr | removeformat link unlink pastetext preview | image media',
-        toolbar2: 'bold italic underline strikethrough | forecolor backcolor | indent outdent | alignleft aligncenter alignright alignjustify | bullist numlist',
-      }, this.config)
-
-      // 把配置的plugins转换为external_plugins的形式，使用unpgk cdn
-      if (Object.prototype.toString.call(this.configInternal.plugins) === '[object String]') {
-        const plugins = this.configInternal.plugins.match(/([\d\w]+)/gm)
-        if (Object.prototype.toString.call(plugins) === '[object Array]') {
-          plugins.forEach(value => {
-            this.configInternal.external_plugins[value] = `${this.url}/plugins/${value}/plugin.js`
-          })
-        }
-      }
-      this.configInternal.plugins = ''
-    },
-    mounted () {
-      this.$nextTick(() => {
-        // 编辑器实例初始化
-        this.configInternal.target = this.$refs.editor
-        this.configInternal.init_instance_callback = editor => {
-          if (Object.prototype.toString.call(this.config.init_instance_callback) === '[object Function]') {
-            this.config.init_instance_callback(editor)
-          }
-          this.editor = editor
-          this.setContent()
-          editor.on(this.updateEvent, this.contentChange)
-        }
-        tinymce.init(this.configInternal)
-      })
-    },
+    created () {},
+    mounted () {},
     beforeDestroy () {
-      // 销毁
-      if (this.editor) {
-        this.editor.destroy()
-        this.editor = null
-      }
-      tinymce.remove()
+      this.destroy()
     },
     methods: {
+      init () {
+        this.destroy()
+
+        let config = {}
+
+        if (Object.prototype.toString.call(this.config) === '[object Object]' && Object.keys(this.config).length) {
+          config = Object.assign(config, this.config)
+        }
+
+        const zhCN = 'zh_CN'
+
+        // 如果language不等于false，才设置默认值
+        if (config.language !== false) {
+          if (Object.prototype.toString.call(config.language) !== '[object String]') {
+            config.language = zhCN
+          }
+          if (Object.prototype.toString.call(config.language_url) !== '[object String]') {
+            config.language_url = `https://unpkg.com/@panhezeng/vue-tinymce@latest/src/langs/${config.language}.js`
+          }
+        }
+
+        const extend = {
+          font_formats: 'Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Courier New=courier new,courier;Helvetica=helvetica;Symbol=symbol;Times New Roman=times new roman,times;Verdana=verdana,geneva;',
+        }
+
+        if (config.language === zhCN) {
+          extend.font_formats = '微软雅黑="微软雅黑";苹方="苹方";宋体="宋体";黑体="黑体";仿宋="仿宋";楷体="楷体";隶书="隶书";幼圆="幼圆";' + extend.font_formats
+          extend.content_style = 'body, td, pre {font-family:"微软雅黑", "苹方", "宋体", Verdana, Arial, Helvetica, sans-serif;}'
+        }
+
+        // 合并配置，把传入的配置和默认配置合并
+        config = Object.assign({
+          branding: false,
+          theme_url: `${this.url}/themes/modern/theme.js`,
+          skin_url: `${this.url}/skins/lightgray`,
+          menubar: false,
+          fontsize_formats: '12px 13px 14px 15px 16px 18px 20px 24px',
+          external_plugins: {},
+          plugins: 'code hr link textcolor colorpicker advlist lists contextmenu paste table image imagetools media preview',
+          contextmenu: 'selectall copy paste inserttable',
+          toolbar1: 'code | undo redo | fontsizeselect fontselect | blockquote hr | removeformat link unlink pastetext preview | image media',
+          toolbar2: 'bold italic underline strikethrough | forecolor backcolor | indent outdent | alignleft aligncenter alignright alignjustify | bullist numlist',
+        }, extend, config)
+
+        // 把配置的plugins转换为external_plugins的形式，使用unpgk cdn
+        if (Object.prototype.toString.call(config.plugins) === '[object String]') {
+          const plugins = config.plugins.match(/([\d\w]+)/gm)
+          if (Object.prototype.toString.call(plugins) === '[object Array]') {
+            plugins.forEach(value => {
+              config.external_plugins[value] = `${this.url}/plugins/${value}/plugin.js`
+            })
+          }
+        }
+        delete config.plugins
+
+        this.$nextTick(() => {
+          // 编辑器实例初始化
+          config.target = this.$refs.editor
+          config.init_instance_callback = editor => {
+            if (Object.prototype.toString.call(this.config.init_instance_callback) === '[object Function]') {
+              this.config.init_instance_callback(editor)
+            }
+            this.editor = editor
+            this.setContent()
+            editor.on(this.updateEvent, this.contentChange)
+          }
+          tinymce.init(config)
+        })
+      },
+      destroy () {
+        // 销毁
+        if (this.editor) {
+          this.editor.destroy()
+          this.editor = null
+        }
+        tinymce.remove()
+      },
       setContent () {
         // 如果编辑器实例已经为真，并且编辑器内容和父组件传入的内容不一样
         if (this.editor && this.editor.getContent() !== this.content) {
