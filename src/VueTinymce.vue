@@ -1,6 +1,5 @@
 <template>
   <div class="vue-tinymce-comp" :id="`vue-tinymce-${id}`">
-    {{JSON.stringify(config)}}
     <textarea :name="`vue-tinymce-content-${id}`" ref="editor"></textarea>
   </div>
 </template>
