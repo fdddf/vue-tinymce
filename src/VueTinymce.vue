@@ -60,6 +60,7 @@
     created () {},
     mounted () {},
     beforeDestroy () {
+//      debugger
       this.destroy()
     },
     methods: {
@@ -133,12 +134,17 @@
         })
       },
       destroy () {
-        // 销毁
-        if (this.editor) {
-          this.editor.destroy()
-          this.editor = null
+        try {
+          // 销毁
+          if (this.editor) {
+            this.editor.destroy()
+            this.editor = null
+          }
+          tinymce.remove()
+        } catch (e) {
+
         }
-        tinymce.remove()
+
       },
       setContent () {
         // 如果编辑器实例已经为真，并且编辑器内容和父组件传入的内容不一样

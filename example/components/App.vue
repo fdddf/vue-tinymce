@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>VueTinymce example</h1>
-    <button @click="show=!show">点击加载移除编辑器，测试初始化和销毁</button>
+    <button @click="show=!show">点击加载移除编辑器，测试初始化和销毁：：：{{show?'销毁':'加载'}}</button>
     <br/>
     <br/>
     <button @click="switchLanguage">点击切换语言，测试更新config</button>
