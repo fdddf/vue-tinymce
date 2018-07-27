@@ -21,7 +21,7 @@
         type: String,
         required: true
       },
-      // 触发content同步更新的tinymce Editor Events，如果需要更即时的同步，可以使用Change
+      // 触发content同步更新的tinymce Editor Events，如要更即时的同步，可以使用Change Event
       // https://www.tinymce.com/docs/advanced/events/
       updateEvent: {
         type: String,
