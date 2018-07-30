@@ -14,12 +14,12 @@
 </template>
 
 <script>
-    import Vue from 'vue'
-    import VueTinymce from '../../src'
-
-    Vue.use(VueTinymce)
+  //    import Vue from 'vue'
+  //    import VueTinymce from '../../src'
+  //
+  //    Vue.use(VueTinymce)
   //  const VueTinymce = () => import('../../dist/vue-tinymce.min')
-//  const VueTinymce = () => import('../../src')
+  const VueTinymce = () => import('../../src')
 
   export default {
     name: 'App',
