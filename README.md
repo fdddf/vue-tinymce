@@ -4,8 +4,11 @@
 
 ## use
 
-`npm i @panhezeng/vue-tinymce -S`
+### internal vue 方式
 
+`npm i vue @panhezeng/vue-tinymce -S`
+
+#### 异步
 ```vue
 <script>
   const VueTinymce = () => import('@panhezeng/vue-tinymce')
@@ -18,7 +21,39 @@
 </script>
 ```
 
+#### 同步
+```vue
+<script>
+    import Vue from 'vue'
+    import VueTinymce from '@panhezeng/vue-tinymce'
 
+    Vue.use(VueTinymce)
+ 
+   export default {
+     name: 'App',
+     data () {return {content: ''}},
+   }
+</script>
+```
+
+### external vue 方式
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.min.js"></script>
+```
+
+`npm i @panhezeng/vue-tinymce -S`
+
+```javascript
+// auto install
+import '@panhezeng/vue-tinymce'
+```
+or 
+```html
+<!--auto install-->
+<script src="https://cdn.jsdelivr.net/npm/tinymce@latest/tinymce.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@panhezeng/vue-tinymce@latest/dist/vue-tinymce.min.js"></script>
+```
 
 ## 说明
 

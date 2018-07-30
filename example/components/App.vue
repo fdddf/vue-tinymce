@@ -14,8 +14,12 @@
 </template>
 
 <script>
-  //    const VueTinymce = () => import('../../dist/vue-tinymce.min')
-  const VueTinymce = () => import('../../src')
+    import Vue from 'vue'
+    import VueTinymce from '../../src'
+
+    Vue.use(VueTinymce)
+  //  const VueTinymce = () => import('../../dist/vue-tinymce.min')
+//  const VueTinymce = () => import('../../src')
 
   export default {
     name: 'App',
@@ -24,7 +28,7 @@
       return {
         content: 'init content',
         show: true,
-        locale: '',
+        locale: ''
       }
     },
     computed: {
@@ -34,7 +38,7 @@
           language = {language: 'en_CA'}
         }
         return language
-      },
+      }
     },
     created () {},
     methods: {
@@ -44,8 +48,8 @@
         } else {
           this.locale = 'en'
         }
-      },
-    },
+      }
+    }
   }
 </script>
 <style>
