@@ -6,37 +6,32 @@ module.exports = {
     libraryTarget: 'umd',
     globalObject: 'this',
     library: 'VueTinymce',
-    umdNamedDefine: true,
+    umdNamedDefine: true
   },
   externals: {
-    'tinymce/tinymce': {
-      commonjs: 'tinymce',
-      commonjs2: 'tinymce',
-      amd: 'tinymce',
-      root: 'tinymce',
-    },
+    'tinymce': 'tinymce'
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        use: 'vue-loader',
+        use: 'vue-loader'
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: 'babel-loader'
       },
       {
         test: /\.css$/,
         use: [
           'vue-style-loader',
-          'css-loader',
-        ],
-      },
-    ],
+          'css-loader'
+        ]
+      }
+    ]
   },
   plugins: [
-    new VueLoaderPlugin(),
-  ],
+    new VueLoaderPlugin()
+  ]
 }

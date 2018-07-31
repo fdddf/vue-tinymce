@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-  import tinymce from 'tinymce/tinymce'
+  import tinymce from 'tinymce'
 
   export default {
     name: 'VueTinymce',
