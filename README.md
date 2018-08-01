@@ -2,59 +2,6 @@
 
 [示例](https://panhezeng.github.io/vue-tinymce/)
 
-## use
-
-### internal vue 方式
-
-`npm i vue @panhezeng/vue-tinymce -S`
-
-#### 异步
-```vue
-<script>
-  const VueTinymce = () => import('@panhezeng/vue-tinymce')
- 
-   export default {
-     name: 'App',
-     components: {VueTinymce},
-     data () {return {content: ''}},
-   }
-</script>
-```
-
-#### 同步
-```vue
-<script>
-    import Vue from 'vue'
-    import VueTinymce from '@panhezeng/vue-tinymce'
-
-    Vue.use(VueTinymce)
- 
-   export default {
-     name: 'App',
-     data () {return {content: ''}},
-   }
-</script>
-```
-
-### external vue 方式
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.min.js"></script>
-```
-
-`npm i @panhezeng/vue-tinymce -S`
-
-```javascript
-// auto install
-import '@panhezeng/vue-tinymce'
-```
-or 
-```html
-<!--auto install-->
-<script src="https://cdn.jsdelivr.net/npm/tinymce@latest/tinymce.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@panhezeng/vue-tinymce@latest/dist/vue-tinymce.min.js"></script>
-```
-
 ## 说明
 
     本打算将原项目个人封装的TinyMCE Vue组件替换为官方TinyMCE Vue组件，尝试后发现官方组件严重TinyMCE Cloud，否则不好用。
@@ -102,6 +49,52 @@ or
         }
       }
     },
+```
+
+## 用法
+
+### internal vue 方式
+
+`npm i vue @panhezeng/vue-tinymce -S`
+
+#### 异步
+```vue
+<script>
+  const VueTinymce = () => import('@panhezeng/vue-tinymce')
+ 
+   export default {
+     components: {VueTinymce}
+   }
+</script>
+```
+
+#### 同步
+```vue
+<script>
+    import Vue from 'vue'
+    import VueTinymce from '@panhezeng/vue-tinymce'
+
+    Vue.use(VueTinymce)
+</script>
+```
+
+### external vue 方式
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.min.js"></script>
+```
+
+`npm i @panhezeng/vue-tinymce -S`
+
+```javascript
+// auto install
+import '@panhezeng/vue-tinymce'
+```
+or 
+```html
+<!--auto install-->
+<script src="https://cdn.jsdelivr.net/npm/tinymce@latest/tinymce.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@panhezeng/vue-tinymce@latest/dist/vue-tinymce.min.js"></script>
 ```
 
 ## 编译
