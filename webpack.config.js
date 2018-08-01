@@ -9,6 +9,7 @@ module.exports = {
     umdNamedDefine: true
   },
   externals: {
+    'vue': 'Vue',
     'tinymce': 'tinymce'
   },
   module: {

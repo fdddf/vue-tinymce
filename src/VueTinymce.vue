@@ -96,6 +96,7 @@
 
         // 合并配置，把传入的配置和默认配置合并
         config = Object.assign({
+          convert_urls: false,
           branding: false,
           theme_url: `${this.url}/themes/modern/theme.min.js`,
           skin_url: `${this.url}/skins/lightgray`,
