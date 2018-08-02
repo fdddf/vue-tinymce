@@ -15,11 +15,10 @@
 
 <script>
   //    import Vue from 'vue'
-  //    import VueTinymce from '../../src'
+  //    import VueTinymce from '../../dist/vue-tinymce.min'
   //
   //    Vue.use(VueTinymce)
-  //  const VueTinymce = () => import('../../dist/vue-tinymce.min')
-  const VueTinymce = () => import('../../src')
+  const VueTinymce = () => import('../../dist/vue-tinymce.min')
 
   export default {
     name: 'App',

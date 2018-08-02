@@ -7,6 +7,10 @@ module.exports = {
     filename: 'example.js',
     chunkFilename: '[id].bundle.js',
   },
+  externals: {
+    'vue': 'Vue',
+    'tinymce': 'tinymce'
+  },
   module: {
     rules: [
       {
@@ -15,7 +19,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /node_modules|dist/,
         use: 'babel-loader',
       },
       {
