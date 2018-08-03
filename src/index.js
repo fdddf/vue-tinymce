@@ -1,4 +1,4 @@
-import VueTinymce from './VueTinymce.vue'
+export const VueTinymce = require('./VueTinymce.vue').default
 
 let Vue
 
@@ -22,4 +22,3 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
 }
 
-export default VueTinymce

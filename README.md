@@ -21,6 +21,7 @@
 尝试了通过import加载TinyMCE依赖，但是发现import skins/lightgray无法正常加载其依赖的图片等资源，比如插入音频视频文件，无法显示Object.gif占位图，只能通过skin_url方式才正常显示。
 setup和init_instance_callback的区别，虽然两个API都能获得TinyMCE实例，但前者是实例刚创建时的回调，后者是实例初始化完成时的回调，init_instance_callback获得的实例才能使用setContent等API。
 本组件使用的TinyMCE是latest版本，TinyMCE依赖的相关js和css等也是latest版本，没有太复杂的东西，放心使用，如果有需求，可以fork修改。
+修改了output方式，通过require或window方式使用，不需要加.default
    
 ```vue
 <script>

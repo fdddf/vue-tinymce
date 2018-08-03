@@ -4,9 +4,9 @@ module.exports = {
   output: {
     filename: 'vue-tinymce.min.js',
     libraryTarget: 'umd',
-    globalObject: 'this',
+    umdNamedDefine: true,
     library: 'VueTinymce',
-    umdNamedDefine: true
+    libraryExport: 'VueTinymce'
   },
   externals: {
     'vue': 'Vue',
