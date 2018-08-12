@@ -1,7 +1,7 @@
 {
   "name": "@panhezeng/vue-tinymce",
   "description": "A Vue component",
-  "version": "2.0.1",
+  "version": "2.0.0",
   "author": "潘何增 <panhezeng@gmail.com> (http://apsay.com/)",
   "license": "MIT",
   "private": false,
@@ -25,12 +25,12 @@
   "main": "dist/vue-tinymce.min.js",
   "scripts": {
     "dev:example": "webpack-dev-server --mode development --open --hot --config webpack.example.config.js",
-    "build:example": "rm -rf docs && mkdir docs && cp index.html docs && webpack --mode production --config webpack.example.config.js",
+    "build:example": "webpack --mode production --config webpack.example.config.js",
     "build": "webpack --mode production"
   },
   "dependencies": {
     "tinymce": "latest",
-    "vue": "latest"
+    "vue": "^2.5.17"
   },
   "browserslist": [
     "> 1%",
@@ -38,6 +38,7 @@
     "not ie <= 8"
   ],
   "devDependencies": {
+    "@panhezeng/before-run-webpack-plugin": "latest",
     "babel-core": "latest",
     "babel-loader": "latest",
     "babel-plugin-syntax-dynamic-import": "latest",
@@ -46,7 +47,7 @@
     "css-loader": "latest",
     "vue-loader": "latest",
     "vue-template-compiler": "latest",
-    "webpack": "latest",
+    "webpack": "^4.16.5",
     "webpack-cli": "latest",
     "webpack-dev-server": "latest"
   }
