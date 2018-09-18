@@ -1,6 +1,6 @@
 <template>
-  <div class="vue-tinymce-comp" :id="`vue-tinymce-${id}`">
-    <textarea :name="`vue-tinymce-content-${id}`" ref="editor"></textarea>
+  <div class="vue-tinymce-comp">
+    <textarea ref="editor"></textarea>
   </div>
 </template>
 <script>
@@ -8,14 +8,7 @@
 
   export default {
     name: 'VueTinymce',
-    mixins: [],
-    components: {},
     props: {
-      // 当前页面该编辑器的唯一id，如果只有一个可以用默认值
-      id: {
-        type: String,
-        default: '1'
-      },
       // 父组件通过:content.sync同步富文本编辑器内容
       content: {
         type: String,
@@ -45,7 +38,6 @@
         editor: null
       }
     },
-    computed: {},
     watch: {
       config: {
         handler: 'init',
@@ -57,10 +49,7 @@
         immediate: true
       }
     },
-    created () {},
-    mounted () {},
     beforeDestroy () {
-//      debugger
       this.destroy()
     },
     methods: {
@@ -138,10 +127,10 @@
         try {
           // 销毁
           if (this.editor) {
+            this.editor.remove()
             this.editor.destroy()
             this.editor = null
           }
-          tinymce.remove()
         } catch (e) {
 
         }

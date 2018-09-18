@@ -27,11 +27,6 @@ setup和init_instance_callback的区别，虽然两个API都能获得TinyMCE实�
 <script>
   export default {
     props: {
-      // 当前页面该编辑器的唯一id，如果只有一个可以用默认值
-      id: {
-        type: String,
-        default: '1'
-      },
       // 父组件通过:content.sync同步富文本编辑器内容
       content: {
         type: String,

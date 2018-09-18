@@ -8,13 +8,15 @@
     <br/>
     <br/>
     <vue-tinymce :content.sync="content" :config="config" v-if="show"/>
+    <vue-tinymce :content.sync="content" :config="config"/>
     <h2>output</h2>
     <div v-html="content"></div>
   </div>
 </template>
 
 <script>
-  require('../../dist/vue-tinymce.min')
+    require('../../dist/vue-tinymce.min')
+//  require('../../src')
   //    import Vue from 'vue'
   //    import VueTinymce from '../../dist/vue-tinymce.min'
   //
