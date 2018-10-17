@@ -32,11 +32,10 @@ setup和init_instance_callback的区别，虽然两个API都能获得TinyMCE实�
         type: String,
         required: true
       },
-      // 触发content同步更新的tinymce Editor Events，如要更即时的同步，可以使用Change Event
-      // https://www.tinymce.com/docs/advanced/events/
+      // 触发content同步更新的tinymce Editor Events，其他https://www.tinymce.com/docs/advanced/events/
       updateEvent: {
         type: String,
-        default: 'MouseOut'
+        default: 'beforeaddundo undo redo keyup'
       },
       // tinymce依赖文件的cdn url
       url: {
