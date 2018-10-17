@@ -14,11 +14,10 @@
         type: String,
         required: true
       },
-      // 触发content同步更新的tinymce Editor Events，如要更即时的同步，可以使用Change Event
-      // https://www.tinymce.com/docs/advanced/events/
+      // 触发content同步更新的tinymce Editor Events，其他https://www.tinymce.com/docs/advanced/events/
       updateEvent: {
         type: String,
-        default: 'MouseOut'
+        default: 'beforeaddundo undo redo keyup'
       },
       // tinymce依赖文件的cdn url
       url: {
@@ -118,7 +117,9 @@
             }
             this.editor = editor
             this.setContent()
-            editor.on(this.updateEvent, this.contentChange)
+            editor.on(this.updateEvent, tinymce.util.Delay.debounce(() => {
+              this.contentChange()
+            }, 300))
           }
           tinymce.init(config)
         })
@@ -131,10 +132,7 @@
             this.editor.destroy()
             this.editor = null
           }
-        } catch (e) {
-
-        }
-
+        } catch (e) {}
       },
       setContent () {
         // 如果编辑器实例已经为真，并且编辑器内容和父组件传入的内容不一样
@@ -142,10 +140,12 @@
           this.editor.setContent(this.content)
         }
       },
-      contentChange (e) {
+      contentChange () {
         // 同步到父组件
         if (this.editor) {
-          this.$emit('update:content', this.editor.getContent())
+          const content = this.editor.getContent()
+          this.$emit('update:content', content)
+          this.$emit('content-change', content)
         }
       }
     }
