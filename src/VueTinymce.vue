@@ -22,7 +22,7 @@
       // tinymce依赖文件的cdn url
       url: {
         type: String,
-        default: 'https://cdn.jsdelivr.net/npm/tinymce@latest'
+        default: 'https://cdn.jsdelivr.net/npm/tinymce@4.9.3'
       },
       // tinymce的init方法的config参数，本组件有默认设置，比如不要toolbar3，可以使用该组件时写上 :config="{toolbar2:''}"
       config: {
