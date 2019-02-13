@@ -95,8 +95,7 @@ import '@panhezeng/vue-tinymce'
 or 
 ```html
 <!--auto install-->
-<script src="https://cdn.jsdelivr.net/npm/tinymce@~5/tinymce.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@panhezeng/vue-tinymce@latest/dist/vue-tinymce.min.js"></script>
+<script src="https://cdn.jsdelivr.net/combine/npm/vue@~2/dist/vue.min.js,npm/tinymce@~5/tinymce.min.js,npm/@panhezeng/vue-tinymce@latest/dist/vue-tinymce.min.js"></script>
 ```
 
 ## 编译
