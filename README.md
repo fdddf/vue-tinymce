@@ -14,42 +14,41 @@
 本组件只是简单封装，没有多余功能，默认语言中文language: 'zh_CN'。
 
 使用本组件的优势，相对于官方TinyMCE Vue组件来说：
-不用在项目中import TinyMCE的模板和插件js，通过https://cdn.jsdelivr.net/npm/tinymce@latest实现了同步latest版本资源，
+不用在项目中import TinyMCE的模板和插件js，通过https://cdn.jsdelivr.net/npm/tinymce@~5实现了同步版本资源，
 默认中文配置，
 自动销毁等。
 
-尝试了通过import加载TinyMCE依赖，但是发现import skins/lightgray无法正常加载其依赖的图片等资源，比如插入音频视频文件，无法显示Object.gif占位图，只能通过skin_url方式才正常显示。
 setup和init_instance_callback的区别，虽然两个API都能获得TinyMCE实例，但前者是实例刚创建时的回调，后者是实例初始化完成时的回调，init_instance_callback获得的实例才能使用setContent等API。
-本组件使用的TinyMCE是latest版本，TinyMCE依赖的相关js和css等也是latest版本，没有太复杂的东西，放心使用，如果有需求，可以fork修改。
+本组件使用的TinyMCE是~5版本，TinyMCE依赖的相关js和css等也是~5版本，没有太复杂的东西，放心使用，如果有需求，可以fork修改。
 修改了output方式，通过require或window方式使用，不需要加.default
    
 ```vue
 <script>
   export default {
-    props: {
-      // 父组件通过:content.sync同步富文本编辑器内容
-      content: {
-        type: String,
-        required: true
-      },
-      // 触发content同步更新的tinymce Editor Events，其他https://www.tinymce.com/docs/advanced/events/
-      updateEvent: {
-        type: String,
-        default: 'beforeaddundo undo redo keyup'
-      },
-      // tinymce依赖文件的cdn url
-      url: {
-        type: String,
-        default: 'https://cdn.jsdelivr.net/npm/tinymce@latest'
-      },
-      // tinymce的init方法的config参数，本组件有默认设置，比如不要toolbar3，可以使用该组件时写上 :config="{toolbar2:''}"
-      config: {
-        type: Object,
-        default () {
-          return {}
-        }
-      }
+  props: {
+    // 父组件通过:content.sync同步富文本编辑器内容
+    content: {
+      type: String,
+      required: true
     },
+    // 触发content同步更新的tinymce Editor Events，其他https://www.tiny.cloud/docs/advanced/events/
+    updateEvent: {
+      type: String,
+      default: "beforeaddundo undo redo keyup"
+    },
+    // tinymce依赖文件的cdn url
+    url: {
+      type: String,
+      default: "https://cdn.jsdelivr.net/npm/tinymce@~5"
+    },
+    // tinymce的init方法的config参数，本组件有默认设置，比如不要toolbar3，可以使用该组件时写上 :config="{toolbar2:''}"
+    config: {
+      type: Object,
+      default() {
+        return {};
+      }
+    }
+  },
   }
 </script>  
 ```
@@ -58,7 +57,7 @@ setup和init_instance_callback的区别，虽然两个API都能获得TinyMCE实�
 
 ### internal vue 方式
 
-`npm i vue @panhezeng/vue-tinymce -S`
+`npm i vue tinymce @panhezeng/vue-tinymce -S`
 
 #### 异步
 ```vue
@@ -87,7 +86,7 @@ setup和init_instance_callback的区别，虽然两个API都能获得TinyMCE实�
 <script src="https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.min.js"></script>
 ```
 
-`npm i @panhezeng/vue-tinymce -S`
+`npm i tinymce @panhezeng/vue-tinymce -S`
 
 ```javascript
 // auto install
