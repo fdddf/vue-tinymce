@@ -29,7 +29,7 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
-    "tinymce": "4.9.3",
+    "tinymce": "latest",
     "vue": "latest"
   },
   "browserslist": [
@@ -38,7 +38,6 @@
     "not ie <= 8"
   ],
   "devDependencies": {
-    "ajv": "6.8.1",
     "@babel/core": "latest",
     "@babel/plugin-syntax-dynamic-import": "latest",
     "@babel/plugin-transform-runtime": "latest",
