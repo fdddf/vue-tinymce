@@ -83,7 +83,7 @@ setup和init_instance_callback的区别，虽然两个API都能获得TinyMCE实�
 ### external vue 方式
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/vue@latest/dist/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@~2/dist/vue.min.js"></script>
 ```
 
 `npm i tinymce @panhezeng/vue-tinymce -S`
@@ -95,7 +95,7 @@ import '@panhezeng/vue-tinymce'
 or 
 ```html
 <!--auto install-->
-<script src="https://cdn.jsdelivr.net/npm/tinymce@latest/tinymce.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tinymce@~5/tinymce.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@panhezeng/vue-tinymce@latest/dist/vue-tinymce.min.js"></script>
 ```
 
