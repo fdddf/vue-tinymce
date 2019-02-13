@@ -14,7 +14,7 @@ export default {
       type: String,
       required: true
     },
-    // 触发content同步更新的tinymce Editor Events，其他https://www.tinymce.com/docs/advanced/events/
+    // 触发content同步更新的tinymce Editor Events，其他https://www.tiny.cloud/docs/advanced/events/
     updateEvent: {
       type: String,
       default: "beforeaddundo undo redo keyup"
@@ -22,7 +22,7 @@ export default {
     // tinymce依赖文件的cdn url
     url: {
       type: String,
-      default: "https://cdn.jsdelivr.net/npm/tinymce@latest"
+      default: "https://cdn.jsdelivr.net/npm/tinymce@~5"
     },
     // tinymce的init方法的config参数，本组件有默认设置，比如不要toolbar3，可以使用该组件时写上 :config="{toolbar2:''}"
     config: {

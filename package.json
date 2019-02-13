@@ -28,28 +28,31 @@
     "build:example": "webpack --mode production --config webpack.example.config.js",
     "build": "webpack --mode production"
   },
-  "dependencies": {
-    "tinymce": "latest",
-    "vue": "latest"
+  "peerDependencies": {
+    "tinymce": "~5",
+    "vue": "~2"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "tinymce": "~5",
+    "vue": "~2",
+    "@babel/core": "~7",
+    "@babel/plugin-syntax-dynamic-import": "~7",
+    "@babel/plugin-transform-runtime": "~7",
+    "@babel/preset-env": "~7",
+    "@babel/runtime": "~7",
+    "@panhezeng/before-run-webpack-plugin": "~1",
+    "babel-loader": "~8",
+    "css-loader": "~2",
+    "vue-loader": "~15",
+    "vue-template-compiler": "~2",
+    "webpack": "~4",
+    "webpack-cli": "~3",
+    "webpack-dev-server": "~3"
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ],
-  "devDependencies": {
-    "@babel/core": "latest",
-    "@babel/plugin-syntax-dynamic-import": "latest",
-    "@babel/plugin-transform-runtime": "latest",
-    "@babel/preset-env": "latest",
-    "@babel/runtime": "latest",
-    "@panhezeng/before-run-webpack-plugin": "latest",
-    "babel-loader": "latest",
-    "css-loader": "latest",
-    "vue-loader": "latest",
-    "vue-template-compiler": "latest",
-    "webpack": "latest",
-    "webpack-cli": "latest",
-    "webpack-dev-server": "latest"
-  }
+  ]
 }
