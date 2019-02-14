@@ -47,8 +47,8 @@
     "vue-loader": "~15",
     "vue-template-compiler": "~2",
     "webpack": "~4",
-    "webpack-cli": "~3",
-    "webpack-dev-server": "~3"
+    "webpack-cli": "~3s",
+    "webpack-dev-server": "^3.1.14"
   },
   "engines": {
     "node": ">= 10.0.0",
