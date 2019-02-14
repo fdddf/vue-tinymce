@@ -9,7 +9,12 @@ module.exports = {
     libraryExport: 'VueTinymce'
   },
   externals: {
-    'vue': 'Vue',
+    vue: {
+      root: 'Vue',
+      commonjs: 'vue',
+      commonjs2: 'vue',
+      amd: 'vue'
+    },
     'tinymce': 'tinymce'
   },
   module: {
