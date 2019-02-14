@@ -1,43 +1,38 @@
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 module.exports = {
   output: {
-    filename: 'vue-tinymce.min.js',
-    libraryTarget: 'umd',
+    filename: "vue-tinymce.min.js",
+    libraryTarget: "umd",
     umdNamedDefine: true,
-    library: 'VueTinymce',
-    libraryExport: 'VueTinymce'
+    library: "VueTinymce",
+    libraryExport: "VueTinymce"
   },
   externals: {
     vue: {
-      root: 'Vue',
-      commonjs: 'vue',
-      commonjs2: 'vue',
-      amd: 'vue'
+      commonjs: "vue",
+      commonjs2: "vue",
+      amd: "vue",
+      root: "Vue"
     },
-    'tinymce': 'tinymce'
+    tinymce: "tinymce"
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        use: 'vue-loader'
+        use: "vue-loader"
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        use: "babel-loader"
       },
       {
         test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ]
+        use: ["vue-style-loader", "css-loader"]
       }
     ]
   },
-  plugins: [
-    new VueLoaderPlugin()
-  ]
-}
+  plugins: [new VueLoaderPlugin()]
+};

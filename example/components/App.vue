@@ -17,7 +17,7 @@
 </template>
 
 <script>
-require('../../dist/vue-tinymce.min')
+require("../../dist/vue-tinymce.min");
 // require("../../src");
 //    import Vue from 'vue'
 //    import VueTinymce from '../../dist/vue-tinymce.min'
