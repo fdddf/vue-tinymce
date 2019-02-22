@@ -51,6 +51,10 @@ export default {
   beforeDestroy() {
     this.destroy();
   },
+  created() {
+    // 从指定url加载tinymce依赖文件
+    tinymce.EditorManager.baseURL = this.url;
+  },
   methods: {
     init() {
       this.destroy();
@@ -133,9 +137,6 @@ export default {
       //   }
       // }
       // delete tinymceConfig.plugins;
-
-      // 从指定url加载tinymce依赖文件
-      tinymce.EditorManager.baseURL = this.url;
 
       this.$nextTick(() => {
         // 编辑器实例初始化
