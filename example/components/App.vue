@@ -9,8 +9,17 @@
     <button @click="switchLanguage">点击切换语言，测试更新config</button>
     <br />
     <br />
-    <vue-tinymce :content.sync="content" :config="config" v-if="show" />
-    <vue-tinymce :content.sync="content" :config="config" />
+    <vue-tinymce
+      :content.sync="content"
+      :config="config"
+      v-if="show"
+      url="https://cdn.jsdelivr.net/npm/tinymce@5.0.2"
+    />
+    <vue-tinymce
+      :content.sync="content"
+      :config="config"
+      url="https://cdn.jsdelivr.net/npm/tinymce@5.0.2"
+    />
     <h2>output</h2>
     <div v-html="content"></div>
   </div>
