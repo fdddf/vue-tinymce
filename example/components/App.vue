@@ -13,12 +13,12 @@
       :content.sync="content"
       :config="config"
       v-if="show"
-      url="https://cdn.jsdelivr.net/npm/tinymce@5.0.2"
+      url="https://cdn.jsdelivr.net/npm/tinymce@5.0.3"
     />
     <vue-tinymce
       :content.sync="content"
       :config="config"
-      url="https://cdn.jsdelivr.net/npm/tinymce@5.0.2"
+      url="https://cdn.jsdelivr.net/npm/tinymce@5.0.3"
     />
     <h2>output</h2>
     <div v-html="content"></div>
