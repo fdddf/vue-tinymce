@@ -8,23 +8,23 @@
 
 ## 说明
 
-本打算将原项目个人封装的TinyMCE Vue组件替换为官方TinyMCE Vue组件，尝试后发现官方组件严重TinyMCE Cloud，否则不好用。
-本组件默认配置的toolbar属性值，依据微信公众号后台富文本编辑器布局配置。
-原项目中的TinyMCE Vue组件几乎做得和微信公众号后台富文本编辑器一样，图片音频视频资源管理是单独侧边栏，实现核心是TinyMCE editor的insertContent方法，并且依赖element ui。
-本组件只是简单封装，没有多余功能，默认语言中文language: 'zh_CN'。
+本打算将原项目个人封装的 TinyMCE Vue 组件替换为官方 TinyMCE Vue 组件，尝试后发现官方组件严重 TinyMCE Cloud，否则不好用。
+本组件默认配置的 toolbar 属性值，依据微信公众号后台富文本编辑器布局配置。
+原项目中的 TinyMCE Vue 组件几乎做得和微信公众号后台富文本编辑器一样，图片音频视频资源管理是单独侧边栏，实现核心是 TinyMCE editor 的 insertContent 方法，并且依赖 element ui。
+本组件只是简单封装，没有多余功能，默认语言中文 language: 'zh_CN'。
 
-使用本组件的优势，相对于官方TinyMCE Vue组件来说：
-不用在项目中import TinyMCE的模板和插件js，通过https://cdn.jsdelivr.net/npm/tinymce@~5实现了同步版本资源，
+使用本组件的优势，相对于官方 TinyMCE Vue 组件来说：
+不用在项目中 import TinyMCE 的模板和插件 js，通过https://cdn.jsdelivr.net/npm/tinymce@~5实现了同步版本资源，
 默认中文配置，
 自动销毁等。
 
-setup和init_instance_callback的区别，虽然两个API都能获得TinyMCE实例，但前者是实例刚创建时的回调，后者是实例初始化完成时的回调，init_instance_callback获得的实例才能使用setContent等API。
-本组件使用的TinyMCE是~5版本，TinyMCE依赖的相关js和css等也是~5版本，没有太复杂的东西，放心使用，如果有需求，可以fork修改。
-修改了output方式，通过require或window方式使用，不需要加.default
-   
+setup 和 init_instance_callback 的区别，虽然两个 API 都能获得 TinyMCE 实例，但前者是实例刚创建时的回调，后者是实例初始化完成时的回调，init_instance_callback 获得的实例才能使用 setContent 等 API。
+本组件使用的 TinyMCE 是~5 版本，TinyMCE 依赖的相关 js 和 css 等也是~5 版本，没有太复杂的东西，放心使用，如果有需求，可以 fork 修改。
+修改了 output 方式，通过 require 或 window 方式使用，不需要加.default
+
 ```vue
 <script>
-  export default {
+export default {
   props: {
     // 父组件通过:content.sync同步富文本编辑器内容
     content: {
@@ -48,9 +48,9 @@ setup和init_instance_callback的区别，虽然两个API都能获得TinyMCE实�
         return {};
       }
     }
-  },
   }
-</script>  
+};
+</script>
 ```
 
 ## 用法
@@ -60,23 +60,25 @@ setup和init_instance_callback的区别，虽然两个API都能获得TinyMCE实�
 `npm i vue tinymce @panhezeng/vue-tinymce -S`
 
 #### 异步
+
 ```vue
 <script>
-  const VueTinymce = () => import('@panhezeng/vue-tinymce')
- 
-   export default {
-     components: {VueTinymce}
-   }
+const VueTinymce = () => import("@panhezeng/vue-tinymce");
+
+export default {
+  components: { VueTinymce }
+};
 </script>
 ```
 
 #### 同步
+
 ```vue
 <script>
-    import Vue from 'vue'
-    import VueTinymce from '@panhezeng/vue-tinymce'
+import Vue from "vue";
+import VueTinymce from "@panhezeng/vue-tinymce";
 
-    Vue.use(VueTinymce)
+Vue.use(VueTinymce);
 </script>
 ```
 
@@ -90,9 +92,11 @@ setup和init_instance_callback的区别，虽然两个API都能获得TinyMCE实�
 
 ```javascript
 // auto install
-import '@panhezeng/vue-tinymce'
+import "@panhezeng/vue-tinymce";
 ```
-or 
+
+or
+
 ```html
 <!--auto install-->
 <script src="https://cdn.jsdelivr.net/combine/npm/vue@~2/dist/vue.min.js,npm/tinymce@~5/tinymce.min.js,npm/@panhezeng/vue-tinymce@latest/dist/vue-tinymce.min.js"></script>
@@ -100,7 +104,7 @@ or
 
 ## 编译
 
-``` bash
+```bash
 # install dependencies
 npm install
 
@@ -111,7 +115,6 @@ npm run dev:example
 npm run build
 
 # 发版
-npm version patch && npm publish --access public
+npm set @panhezeng:registry https://registry.npmjs.org/ && npm version patch && npm publish --access public && npm set @panhezeng:registry https://registry.npm.taobao.org/
 
 ```
-
