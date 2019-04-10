@@ -1,7 +1,7 @@
 {
   "name": "@panhezeng/vue-tinymce",
   "description": "A Vue component",
-  "version": "2.0.10",
+  "version": "2.1.0",
   "author": "潘何增 <panhezeng@gmail.com> (http://apsay.com/)",
   "license": "MIT",
   "private": false,
@@ -34,11 +34,11 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.4.0",
+    "@babel/core": "^7.4.3",
     "@babel/plugin-syntax-dynamic-import": "~7",
-    "@babel/plugin-transform-runtime": "^7.4.0",
-    "@babel/preset-env": "^7.4.2",
-    "@babel/runtime": "^7.4.2",
+    "@babel/plugin-transform-runtime": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/runtime": "^7.4.3",
     "@panhezeng/before-run-webpack-plugin": "~1",
     "babel-loader": "~8",
     "css-loader": "^2.1.1",
@@ -51,7 +51,7 @@
     "vue-template-compiler": "^2.6.10",
     "webpack": "~4",
     "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.3.1"
   },
   "husky": {
     "hooks": {
