@@ -100,7 +100,11 @@ export default {
         Object.prototype.toString.call(tinymceConfig.language_url) !==
           "[object String]"
       ) {
-        tinymceConfig.language_url = `https://cdn.jsdelivr.net/npm/@panhezeng/vue-tinymce@latest/src/langs/${
+        let langCDN = "https://cdn.jsdelivr.net/npm/";
+        if (/unpkg.com/.test(this.url)) {
+          langCDN = "https://unpkg.com/";
+        }
+        tinymceConfig.language_url = `${langCDN}@panhezeng/vue-tinymce@latest/src/langs/${
           tinymceConfig.language
         }.min.js`;
       }
