@@ -144,25 +144,30 @@ export default {
 
       this.$nextTick(() => {
         // 编辑器实例初始化
-        tinymceConfig.target = this.$refs.editor;
-        tinymceConfig.init_instance_callback = editor => {
-          if (
-            Object.prototype.toString.call(
-              this.config.init_instance_callback
-            ) === "[object Function]"
-          ) {
-            this.config.init_instance_callback(editor);
-          }
-          this.editor = editor;
-          this.setContent();
-          editor.on(
-            this.updateEvent,
-            tinymce.util.Delay.debounce(() => {
-              this.contentChange();
-            }, 300)
-          );
-        };
-        tinymce.init(tinymceConfig);
+        const refEditor = this.$refs.editor;
+        if (refEditor) {
+          tinymceConfig.target = this.$refs.editor;
+          tinymceConfig.init_instance_callback = editor => {
+            if (this && this.$refs.editor) {
+              if (
+                Object.prototype.toString.call(
+                  this.config.init_instance_callback
+                ) === "[object Function]"
+              ) {
+                this.config.init_instance_callback(editor);
+              }
+              this.editor = editor;
+              this.setContent();
+              editor.on(
+                this.updateEvent,
+                tinymce.util.Delay.debounce(() => {
+                  this.contentChange();
+                }, 300)
+              );
+            }
+          };
+          tinymce.init(tinymceConfig);
+        }
       });
     },
     destroy() {
