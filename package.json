@@ -26,8 +26,7 @@
   "scripts": {
     "dev:example": "webpack-dev-server --mode development --open --hot --config webpack.example.config.js",
     "build:example": "webpack --mode production --config webpack.example.config.js",
-    "build": "webpack --mode production",
-    "lint": "lint-staged"
+    "build": "webpack --mode production"
   },
   "peerDependencies": {
     "tinymce": "^5.0.11",
