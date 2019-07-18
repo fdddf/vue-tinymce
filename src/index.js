@@ -20,5 +20,5 @@ VueTinymce.install = install;
 
 // auto install in dist mode
 if (typeof window !== "undefined" && window.Vue) {
-              install(window.Vue);
+  install(window.Vue);
 }

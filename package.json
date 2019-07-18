@@ -26,7 +26,8 @@
   "scripts": {
     "dev:example": "webpack-dev-server --mode development --open --hot --config webpack.example.config.js",
     "build:example": "webpack --mode production --config webpack.example.config.js",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "lint": "lint-staged"
   },
   "peerDependencies": {
     "tinymce": "^5.0.11",
@@ -61,7 +62,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,css,md,jsx,vue,ts,less},!**/dist/**,!**/docs/**,!**/node_modules/**": [
+    "*.{js,json,css,md,jsx,vue,ts,less}": [
       "prettier --write",
       "git add"
     ]
