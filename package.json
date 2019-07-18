@@ -62,7 +62,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,css,md,jsx,vue,ts,less},!**/dist/**,!**/docs/**,!**/node_modules/**": [
+    "*.{js,json,css,md,jsx,vue,ts,less}": [
       "prettier --write",
       "git add"
     ]
