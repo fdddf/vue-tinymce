@@ -53,7 +53,7 @@ export default {
         toolbar1:
           "code | undo redo | fontsizeselect fontselect | blockquote hr | removeformat link unlink pastetext preview | image media",
         toolbar2:
-          "bold italic underline strikethrough | forecolor backcolor | indent outdent | alignleft aligncenter alignright alignjustify | bullist numlist"
+          "formatselect | bold italic underline strikethrough | forecolor backcolor | indent outdent | alignleft aligncenter alignright alignjustify | bullist numlist"
       }
     };
   },
@@ -179,6 +179,7 @@ export default {
       try {
         // 销毁
         if (this && this.$refs.editor && this.editor) {
+          tinymce.remove(this.editor);
           this.editor.remove();
           this.editor.destroy();
           this.editor = null;
