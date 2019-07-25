@@ -84,9 +84,7 @@ export default {
           if (/unpkg.com/.test(this.url)) {
             langCDN = "https://unpkg.com/";
           }
-          this.tinymceConfig.language_url = `${langCDN}@panhezeng/vue-tinymce@latest/src/langs/${
-            this.tinymceConfig.language
-          }.min.js`;
+          this.tinymceConfig.language_url = `${langCDN}@panhezeng/vue-tinymce@latest/src/langs/${this.tinymceConfig.language}.min.js`;
         }
 
         // 如果语言为中文，并且没有配置字体，则使用内部配置
@@ -156,9 +154,11 @@ export default {
         this.tinymceConfig.init_instance_callback = editor => {
           if (this && this.$refs.editor) {
             if (
-              Object.prototype.toString.call(
-                this.config.init_instance_callback
-              ) === "[object Function]"
+              /^\[object [^F]*Function\]$/.test(
+                Object.prototype.toString.call(
+                  this.config.init_instance_callback
+                )
+              )
             ) {
               this.config.init_instance_callback(editor);
             }
