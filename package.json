@@ -33,27 +33,27 @@
     "vue": "^2.6.0"
   },
   "dependencies": {
-    "npm": "^6.10.1"
+    "npm": "^6.11.3"
   },
   "devDependencies": {
-    "@babel/core": "~7",
+    "@babel/core": "^7.5.5",
     "@babel/plugin-syntax-dynamic-import": "~7",
-    "@babel/plugin-transform-runtime": "~7",
-    "@babel/preset-env": "~7",
-    "@babel/runtime": "~7",
-    "@panhezeng/before-run-webpack-plugin": "~1",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/runtime": "^7.5.5",
+    "@panhezeng/before-run-webpack-plugin": "^1.0.10",
     "babel-loader": "~8",
-    "css-loader": "^3.0.0",
-    "husky": "^3.0.0",
-    "lint-staged": "^9.2.0",
+    "css-loader": "^3.2.0",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
     "prettier": "^1.18.2",
-    "tinymce": "^5.0.11",
+    "tinymce": "^5.0.15",
     "vue": "^2.6.10",
-    "vue-loader": "~15",
+    "vue-loader": "^15.7.1",
     "vue-template-compiler": "^2.6.10",
-    "webpack": "~4",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.3.1"
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
   },
   "husky": {
     "hooks": {
