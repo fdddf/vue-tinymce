@@ -24,8 +24,6 @@ setup 和 init_instance_callback 的区别，虽然两个 API 都能获得 TinyM
 
 修改了 output 方式，通过 require 或 window 方式使用，不需要加.default
 
-打包 polyfills 应当是最终使用组件的应用的责任
-
 ```vue
 <script>
 export default {
