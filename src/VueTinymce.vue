@@ -45,7 +45,8 @@ export default {
         // skin_url: `${this.url}/skins/ui/oxide`,
         branding: false,
         menubar: false,
-        fontsize_formats: "12px 13px 14px 15px 16px 18px 20px 24px",
+        indentation: "2px",
+        fontsize_formats: "12px 14px 16px 18px 20px 24px",
         external_plugins: {},
         plugins:
           "code hr link advlist lists paste table image imagetools media preview",
