@@ -183,7 +183,6 @@ export default {
       try {
         // 销毁
         if (this && this.$refs.editor && this.editor) {
-          tinymce.remove(this.editor);
           this.editor.remove();
           this.editor.destroy();
           this.editor = null;
