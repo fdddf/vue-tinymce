@@ -47,14 +47,17 @@ export default {
         menubar: false,
         indentation: "2px",
         fontsize_formats: "12px 14px 16px 18px 20px 24px",
-        external_plugins: {},
+        external_plugins: {
+          "text-indent-outdent":
+            "https://cdn.jsdelivr.net/npm/tinymce-plugin-text-indent-outdent@latest/dist/tinymce-plugin-text-indent-outdent/plugin.min.js"
+        },
         plugins:
           "code hr link advlist lists paste table image imagetools media preview",
         contextmenu: "selectall copy paste inserttable",
         toolbar1:
           "code | undo redo | fontsizeselect fontselect | blockquote hr | removeformat link unlink pastetext preview | image media",
         toolbar2:
-          "formatselect | bold italic underline strikethrough | forecolor backcolor | indent outdent | alignleft aligncenter alignright alignjustify | bullist numlist"
+          "formatselect | bold italic underline strikethrough | forecolor backcolor | text-indent text-outdent | indent outdent | alignleft aligncenter alignright alignjustify | bullist numlist"
       }
     };
   },
