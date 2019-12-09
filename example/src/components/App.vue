@@ -6,7 +6,9 @@
     </button>
     <br />
     <br />
-    <button @click="switchLanguage">点击切换语言，测试更新config</button>
+    <button @click="switchLanguage">
+      点击切换语言，测试更新config
+    </button>
     <br />
     <br />
     <vue-tinymce :content.sync="content" :config="config" v-if="show" />
@@ -16,19 +18,19 @@
       url="https://unpkg.com/tinymce@~5"
     />
     <h2>output</h2>
-    <div v-html="content"></div>
+    <div v-html="content" />
   </div>
 </template>
 
 <script>
-require("../../dist/vue-tinymce.min");
-// require("../../src");
+// require("../../../dist/vue-tinymce.min");
+// require("../../../src");
 //    import Vue from 'vue'
-//    import VueTinymce from '../../dist/vue-tinymce.min'
-//
+import { VueTinymce } from "../../../src";
+// import VueTinymce from "../../../dist/vue-tinymce.min";
 //    Vue.use(VueTinymce)
 
-//  const VueTinymce = () => import('../../dist/vue-tinymce.min')
+// const VueTinymce = () => import('../../../dist/vue-tinymce.min')
 
 export default {
   name: "App",

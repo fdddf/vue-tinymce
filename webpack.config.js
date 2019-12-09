@@ -8,15 +8,6 @@ module.exports = {
     library: "VueTinymce",
     libraryExport: "VueTinymce"
   },
-  externals: {
-    vue: {
-      commonjs: "vue",
-      commonjs2: "vue",
-      amd: "vue",
-      root: "Vue"
-    },
-    tinymce: "tinymce"
-  },
   module: {
     rules: [
       {
@@ -33,6 +24,13 @@ module.exports = {
         use: ["vue-style-loader", "css-loader"]
       }
     ]
+  },
+  resolve: {
+    extensions: [".js", ".json", ".jsx", ".css",".vue"]
+  },
+  externals: {
+    vue: "Vue",
+    tinymce: "tinymce"
   },
   plugins: [new VueLoaderPlugin()]
 };

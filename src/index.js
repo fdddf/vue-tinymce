@@ -1,4 +1,6 @@
-export const VueTinymce = require("./VueTinymce.vue").default;
+// export const VueTinymce = require("./VueTinymce").default;
+import index from "./VueTinymce";
+export const VueTinymce = index;
 
 let Vue;
 

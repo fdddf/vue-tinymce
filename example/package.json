@@ -1,18 +1,10 @@
 {
-  "name": "@panhezeng/vue-tinymce",
-  "version": "2.2.2",
-  "description": "A Vue component",
-  "keywords": [
-    "vuejs",
-    "vue component",
-    "tinymce",
-    "rich text editor"
-  ],
-  "homepage": "https://github.com/panhezeng/vue-tinymce#readme",
-  "bugs": {
-    "url": "https://github.com/panhezeng/vue-tinymce/issues",
-    "email": "panhezeng@gmail.com"
-  },
+  "name": "@panhezeng/vue-tinymce-example",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "",
+  "bugs": {},
   "license": "Apache-2.0",
   "author": {
     "name": "潘何增",
@@ -20,24 +12,14 @@
     "url": "http://apsay.com/"
   },
   "contributors": [],
-  "files": [
-    "dist",
-    "src",
-    "package.json",
-    "README"
-  ],
+  "files": [],
   "main": "",
-  "browser": "dist/vue-tinymce.min.js",
+  "browser": "",
   "bin": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/panhezeng/vue-tinymce.git"
-  },
+  "repository": {},
   "scripts": {
-    "build": "webpack --mode production",
-    "install:example": "cd example && npm install",
-    "dev:example": "cd example && npm run dev",
-    "build:example": "cd example && npm run build"
+    "dev": "webpack-dev-server --mode development --open --hot --config webpack.config.js",
+    "build": "webpack --mode production --config webpack.config.js"
   },
   "config": {},
   "dependencies": {
@@ -55,9 +37,11 @@
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^6.0.1",
+    "html-webpack-plugin": "^3.2.0",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
+    "shelljs": "^0.8.3",
     "tinymce": "^5.1.2",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.2",
@@ -66,10 +50,7 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
   },
-  "peerDependencies": {
-    "tinymce": "^5.0.11",
-    "vue": "^2.6.0"
-  },
+  "peerDependencies": {},
   "engines": {
     "node": "latest",
     "npm": "latest"
