@@ -11,7 +11,7 @@
     </button>
     <br />
     <br />
-    <vue-tinymce :content.sync="content" :config="config" v-if="show" />
+    <vue-tinymce v-if="show" :content.sync="content" :config="config" />
     <vue-tinymce
       :content.sync="content"
       :config="config"

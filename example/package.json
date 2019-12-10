@@ -1,6 +1,6 @@
 {
   "name": "@panhezeng/vue-tinymce-example",
-  "version": "0.0.0",
+  "version": "",
   "description": "",
   "keywords": [],
   "homepage": "",
@@ -18,8 +18,9 @@
   "bin": {},
   "repository": {},
   "scripts": {
-    "dev": "webpack-dev-server --mode development --open --hot --config webpack.config.js",
-    "build": "webpack --mode production --config webpack.config.js"
+    "lint": "eslint --fix 'src/**'",
+    "dev": "webpack-dev-server --mode development --open --hot",
+    "build": "npm run lint && webpack --mode production"
   },
   "config": {},
   "dependencies": {
@@ -62,7 +63,7 @@
     }
   },
   "lint-staged": {
-    "src/**.{js,vue}": [
+    "src/**": [
       "eslint --fix",
       "git add"
     ],

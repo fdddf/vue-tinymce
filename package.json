@@ -34,7 +34,8 @@
     "url": "git+https://github.com/panhezeng/vue-tinymce.git"
   },
   "scripts": {
-    "build": "webpack --mode production",
+    "lint": "eslint --fix 'src/**'",
+    "build": "npm run lint && webpack --mode production",
     "install:example": "cd example && npm install",
     "dev:example": "cd example && npm run dev",
     "build:example": "cd example && npm run build"
@@ -50,6 +51,7 @@
     "@babel/preset-env": "^7.7.4",
     "babel-eslint": "^10.0.3",
     "babel-loader": "~8",
+    "copy-webpack-plugin": "^5.1.0",
     "css-loader": "^3.2.0",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
@@ -81,7 +83,7 @@
     }
   },
   "lint-staged": {
-    "src/**.{js,vue}": [
+    "src/**": [
       "eslint --fix",
       "git add"
     ],

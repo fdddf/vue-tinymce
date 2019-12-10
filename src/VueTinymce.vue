@@ -88,7 +88,7 @@ export default {
           if (/unpkg.com/.test(this.url)) {
             langCDN = "https://unpkg.com/";
           }
-          this.tinymceConfig.language_url = `${langCDN}@panhezeng/vue-tinymce@latest/src/langs/${this.tinymceConfig.language}.min.js`;
+          this.tinymceConfig.language_url = `${langCDN}@panhezeng/vue-tinymce@latest/dist/langs/${this.tinymceConfig.language}.min.js`;
         }
 
         // 如果语言为中文，并且没有配置字体，则使用内部配置

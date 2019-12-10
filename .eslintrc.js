@@ -4,12 +4,19 @@ module.exports = {
     browser: true
   },
   plugins: ["prettier"],
-  extends: ["plugin:vue/recommended", "plugin:prettier/recommended"],
+  extends: [
+    "plugin:vue/recommended",
+    "plugin:prettier/recommended",
+    "prettier/vue"
+  ],
   rules: {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "vue/no-v-html": "off",
+    "vue/no-unused-vars": "off",
+    "no-var": "error"
   },
   parserOptions: {
-    "parser": "babel-eslint",
+    parser: "babel-eslint"
   },
   globals: {
     tinymce: "readonly"

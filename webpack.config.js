@@ -1,4 +1,5 @@
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   output: {
@@ -26,11 +27,14 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [".js", ".json", ".jsx", ".css",".vue"]
+    extensions: [".js", ".json", ".jsx", ".css", ".vue"]
   },
   externals: {
     vue: "Vue",
     tinymce: "tinymce"
   },
-  plugins: [new VueLoaderPlugin()]
+  plugins: [
+    new CopyWebpackPlugin([{ context: "static", from: "**" }]),
+    new VueLoaderPlugin()
+  ]
 };
