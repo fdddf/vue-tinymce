@@ -68,45 +68,43 @@ export default {
         Object.assign(this.tinymceConfig, val);
 
         // ============================================================================
-        // 如果语言相关为默认英语，则修改默认配置为中文
-
         const zhCN = "zh_CN";
         const enUS = "en_US";
-        // 如果语言没有配置，则默认配置为中文
-        if (!this.tinymceConfig.language) {
-          this.tinymceConfig.language = zhCN;
-        }
-        // 如果有配置语言，并且不是"en_US"，并且没有配置language_url，则使用本项目的语言包
-        if (
-          Object.prototype.toString.call(this.tinymceConfig.language) ===
-            "[object String]" &&
-          this.tinymceConfig.language !== enUS &&
-          Object.prototype.toString.call(this.tinymceConfig.language_url) !==
-            "[object String]"
-        ) {
-          let langCDN = "https://cdn.jsdelivr.net/npm/";
-          if (/unpkg.com/.test(this.url)) {
-            langCDN = "https://unpkg.com/";
-          }
-          this.tinymceConfig.language_url = `${langCDN}@panhezeng/vue-tinymce@latest/dist/langs/${this.tinymceConfig.language}.min.js`;
-        }
-
-        // 如果语言为中文，并且没有配置字体，则使用内部配置
-        if (
-          this.tinymceConfig.language === zhCN &&
-          Object.prototype.toString.call(this.tinymceConfig.font_formats) !==
-            "[object String]"
-        ) {
-          this.tinymceConfig.font_formats =
-            '微软雅黑="微软雅黑";苹方="苹方";宋体="宋体";黑体="黑体";仿宋="仿宋";楷体="楷体";隶书="隶书";幼圆="幼圆";Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats';
-          // this.tinymceConfig.content_style =
-          //   'body, td, pre {font-family:"微软雅黑", "苹方", "宋体", Verdana, Arial, Helvetica, sans-serif;}';
-        }
-
         // 如果配置为默认英语，则删除语言相关配置节点
         if (this.tinymceConfig.language === enUS) {
           delete this.tinymceConfig.language;
           delete this.tinymceConfig.language_url;
+        } else {
+          // 如果语言没有配置，则默认配置为中文
+          if (!this.tinymceConfig.language) {
+            this.tinymceConfig.language = zhCN;
+          }
+          // 如果没有配置 language_url ，并且是 zhCN ，则使用本项目的语言包
+          if (
+            !/^\[object String\]$/.test(
+              Object.prototype.toString.call(this.tinymceConfig.language_url)
+            ) &&
+            this.tinymceConfig.language === zhCN
+          ) {
+            let langCDN = "https://cdn.jsdelivr.net/npm/";
+            if (/unpkg.com/.test(this.url)) {
+              langCDN = "https://unpkg.com/";
+            }
+            this.tinymceConfig.language_url = `${langCDN}@panhezeng/vue-tinymce@latest/dist/langs/${this.tinymceConfig.language}.js`;
+          }
+
+          // 如果没有配置 font_formats ，并且是 zhCN ，则使用内部配置
+          if (
+            /^\[object String\]$/.test(
+              Object.prototype.toString.call(this.tinymceConfig.font_formats)
+            ) &&
+            this.tinymceConfig.language === zhCN
+          ) {
+            this.tinymceConfig.font_formats =
+              '微软雅黑="微软雅黑";苹方="苹方";宋体="宋体";黑体="黑体";仿宋="仿宋";楷体="楷体";隶书="隶书";幼圆="幼圆";Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats';
+            // this.tinymceConfig.content_style =
+            //   'body, td, pre {font-family:"微软雅黑", "苹方", "宋体", Verdana, Arial, Helvetica, sans-serif;}';
+          }
         }
 
         // 把配置的plugins转换为external_plugins的形式，使用cdn
