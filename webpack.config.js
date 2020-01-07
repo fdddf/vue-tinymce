@@ -1,4 +1,5 @@
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
@@ -34,6 +35,7 @@ module.exports = {
     tinymce: "tinymce"
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new CopyWebpackPlugin([{ context: "static", from: "**" }]),
     new VueLoaderPlugin()
   ]
