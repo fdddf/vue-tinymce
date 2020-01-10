@@ -1,7 +1,7 @@
 const path = require("path");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const shell = require("shelljs");
 
 const outputPath = path.resolve(__dirname, "../docs");
 
@@ -33,7 +33,7 @@ const config = {
     vue: "Vue",
     tinymce: "tinymce"
   },
-  plugins: [new VueLoaderPlugin()]
+  plugins: [new VueLoaderPlugin(), new CleanWebpackPlugin()]
 };
 
 module.exports = (env, argv) => {
@@ -42,7 +42,6 @@ module.exports = (env, argv) => {
     template: "index.html"
   };
   if (argv.mode === "production") {
-    shell.rm("-rf", outputPath);
     HtmlWebpackPluginOptions.script = ".min";
   }
   config.plugins.push(new HtmlWebpackPlugin(HtmlWebpackPluginOptions));

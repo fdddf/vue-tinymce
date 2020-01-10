@@ -44,16 +44,18 @@ export default {
         // theme_url: `${this.url}/themes/silver/theme.min.js`,
         // skin_url: `${this.url}/skins/ui/oxide`,
         branding: false,
-        menubar: false,
         indentation: "2px",
         fontsize_formats: "12px 14px 16px 18px 20px 24px",
         plugins:
-          "code hr link advlist lists paste table image imagetools media preview",
-        contextmenu: "selectall copy paste inserttable",
+          "print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons",
+        contextmenu: "link image imagetools table",
+        image_advtab: true,
+        menubar: "file edit view insert format tools table help",
+        // menubar: false,
         toolbar1:
-          "code | undo redo | fontsizeselect fontselect | blockquote hr | removeformat link unlink pastetext preview | image media",
+          "code | undo redo | fontsizeselect fontselect | blockquote hr | removeformat link unlink pastetext | pagebreak | charmap emoticons | fullscreen preview save print | insertfile image media template",
         toolbar2:
-          "formatselect | bold italic underline strikethrough | forecolor backcolor | text-indent text-outdent | indent outdent | alignleft aligncenter alignright alignjustify | bullist numlist"
+          "formatselect | bold italic underline strikethrough | forecolor backcolor | text-indent text-outdent | indent outdent | alignleft aligncenter alignright alignjustify | bullist numlist | anchor codesample | ltr rtl"
       }
     };
   },

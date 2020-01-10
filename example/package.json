@@ -33,6 +33,7 @@
     "@babel/preset-env": "^7.7.7",
     "babel-eslint": "^10.0.3",
     "babel-loader": "~8",
+    "clean-webpack-plugin": "latest",
     "css-loader": "^3.4.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
