@@ -49,7 +49,7 @@ export default {
         fontsize_formats: "12px 14px 16px 18px 20px 24px",
         external_plugins: {
           "text-indent-outdent":
-            "https://cdn.jsdelivr.net/npm/@panhezeng/tinymce-plugin-text-indent-outdent@latest/dist/tinymce-plugin-text-indent-outdent/plugin.min.js"
+            "https://cdn.jsdelivr.net/npm/@panhezeng/tinymce-plugin-text-indent-outdent@latest/dist/text-indent-outdent/plugin.min.js"
         },
         plugins:
           "code hr link advlist lists paste table image imagetools media preview",
