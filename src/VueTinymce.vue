@@ -55,7 +55,7 @@ export default {
         toolbar1:
           "code | undo redo | fontsizeselect fontselect | blockquote hr | removeformat link unlink pastetext | pagebreak | charmap emoticons | fullscreen preview save print | insertfile image media template",
         toolbar2:
-          "formatselect | bold italic underline strikethrough | forecolor backcolor | text-indent text-outdent | indent outdent | alignleft aligncenter alignright alignjustify | bullist numlist | anchor codesample | ltr rtl"
+          "formatselect | bold italic underline strikethrough | forecolor backcolor | textindent textoutdent | indent outdent | alignleft aligncenter alignright alignjustify | bullist numlist | anchor codesample | ltr rtl"
       }
     };
   },
@@ -132,23 +132,21 @@ export default {
           this.tinymceConfig.external_plugins = {};
         }
 
-        if (!this.tinymceConfig.external_plugins["text-indent-outdent"]) {
+        if (!this.tinymceConfig.external_plugins["textindentoutdent"]) {
           const keys = Object.keys(this.tinymceConfig);
           for (let i = keys.length - 1; i >= 0; i--) {
             const key = keys[i];
-            // 如果 toolbar 配置了 text-indent-outdent 按钮，则加载 text-indent-outdent 插件
+            // 如果 toolbar 配置了 textindent textoutdent 按钮，则加载 textindentoutdent 插件
             if (
               key.indexOf("toolbar") !== -1 &&
-              /\btext-(indent|outdent)\b/g.test(this.tinymceConfig[key])
+              /\btext(indent|outdent)\b/g.test(this.tinymceConfig[key])
             ) {
               if (this.tinymceConfig.language === zhCN) {
-                this.tinymceConfig.external_plugins[
-                  "text-indent-outdent-zh-cn"
-                ] =
-                  "https://cdn.jsdelivr.net/npm/@panhezeng/tinymce-plugin-text-indent-outdent@latest/dist/text-indent-outdent/langs/zh_CN.js";
+                this.tinymceConfig.external_plugins["textindentoutdentzhcn"] =
+                  "https://cdn.jsdelivr.net/npm/@panhezeng/tinymce-plugin-text-indent-outdent@latest/dist/textindentoutdent/langs/zh_CN.js";
               }
-              this.tinymceConfig.external_plugins["text-indent-outdent"] =
-                "https://cdn.jsdelivr.net/npm/@panhezeng/tinymce-plugin-text-indent-outdent@latest/dist/text-indent-outdent/plugin.min.js";
+              this.tinymceConfig.external_plugins["textindentoutdent"] =
+                "https://cdn.jsdelivr.net/npm/@panhezeng/tinymce-plugin-text-indent-outdent@latest/dist/textindentoutdent/plugin.min.js";
               break;
             }
           }
