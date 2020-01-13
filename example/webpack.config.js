@@ -1,6 +1,6 @@
 const path = require("path");
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const outputPath = path.resolve(__dirname, "../docs");
@@ -27,13 +27,22 @@ const config = {
     ]
   },
   resolve: {
-    extensions: [".js", ".json", ".jsx", ".css", ".vue"]
+    extensions: [
+      ".js",
+      ".ts",
+      ".jsx",
+      ".vue",
+      ".css",
+      ".less",
+      ".scss",
+      ".json"
+    ]
   },
   externals: {
     vue: "Vue",
     tinymce: "tinymce"
   },
-  plugins: [new VueLoaderPlugin(), new CleanWebpackPlugin()]
+  plugins: [new CleanWebpackPlugin(), new VueLoaderPlugin()]
 };
 
 module.exports = (env, argv) => {

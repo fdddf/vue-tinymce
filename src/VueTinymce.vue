@@ -79,8 +79,10 @@ export default {
           }
           // 如果没有配置 language_url ，并且是 zhCN ，则使用本项目的语言包
           if (
-            !/^\[object String\]$/.test(
-              Object.prototype.toString.call(this.tinymceConfig.language_url)
+            !(
+              /^\[object String\]$/.test(
+                Object.prototype.toString.call(this.tinymceConfig.language_url)
+              ) && this.tinymceConfig.language_url
             ) &&
             this.tinymceConfig.language === zhCN
           ) {
@@ -93,15 +95,30 @@ export default {
 
           // 如果没有配置 font_formats ，并且是 zhCN ，则使用内部配置
           if (
-            /^\[object String\]$/.test(
-              Object.prototype.toString.call(this.tinymceConfig.font_formats)
+            !(
+              /^\[object String\]$/.test(
+                Object.prototype.toString.call(this.tinymceConfig.font_formats)
+              ) && this.tinymceConfig.font_formats
             ) &&
             this.tinymceConfig.language === zhCN
           ) {
             this.tinymceConfig.font_formats =
-              '微软雅黑="微软雅黑";苹方="苹方";宋体="宋体";黑体="黑体";仿宋="仿宋";楷体="楷体";隶书="隶书";幼圆="幼圆";Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats';
+              "Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Arial Black=arial black,avant garde; Book Antiqua=book antiqua,palatino; Comic Sans MS=comic sans ms,sans-serif; Courier New=courier new,courier; Georgia=georgia,palatino; Helvetica=helvetica; Impact=impact,chicago; Symbol=symbol; Tahoma=tahoma,arial,helvetica,sans-serif; Terminal=terminal,monaco; Times New Roman=times new roman,times; Trebuchet MS=trebuchet ms,geneva; Verdana=verdana,geneva; Webdings=webdings; Wingdings=wingdings,zapf dingbats";
+            if (window.navigator.platform.indexOf("Win") > -1) {
+              this.tinymceConfig.font_formats =
+                "微软雅黑=Microsoft Yahei;黑体=SimHei;宋体=SimSun;楷体=KaiTi;隶书=STLiti;" +
+                this.tinymceConfig.font_formats;
+            } else if (window.navigator.platform.indexOf("Mac") > -1) {
+              this.tinymceConfig.font_formats =
+                "苹方=PingFang SC;黑体=STHeiti;宋体=STSong;楷体=STKaiti;隶书=STLiti;" +
+                this.tinymceConfig.font_formats;
+            } else if (window.navigator.platform.indexOf("Linux") > -1) {
+              this.tinymceConfig.font_formats =
+                "黑体=Source Han Sans SC;宋体=Source Han Serif SC;" +
+                this.tinymceConfig.font_formats;
+            }
             // this.tinymceConfig.content_style =
-            //   'body, td, pre {font-family:"微软雅黑", "苹方", "宋体", Verdana, Arial, Helvetica, sans-serif;}';
+            //   'body, td, pre {font-family:"微软雅黑", "苹方", Verdana, Arial, Helvetica, sans-serif;}';
           }
         }
 

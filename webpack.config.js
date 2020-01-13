@@ -28,7 +28,16 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [".js", ".json", ".jsx", ".css", ".vue"]
+    extensions: [
+      ".js",
+      ".ts",
+      ".jsx",
+      ".vue",
+      ".css",
+      ".less",
+      ".scss",
+      ".json"
+    ]
   },
   externals: {
     vue: "Vue",
@@ -36,7 +45,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyWebpackPlugin([{ context: "static", from: "**" }]),
+    new CopyWebpackPlugin([{ context: "static", from: "**/*" }]),
     new VueLoaderPlugin()
   ]
 };
