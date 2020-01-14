@@ -39,7 +39,12 @@ const config = {
     ]
   },
   externals: {
-    vue: "Vue",
+    vue: {
+      commonjs: "vue",
+      commonjs2: "vue",
+      amd: "vue",
+      root: "Vue"
+    },
     tinymce: "tinymce"
   },
   plugins: [new CleanWebpackPlugin(), new VueLoaderPlugin()]
