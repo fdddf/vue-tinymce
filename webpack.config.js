@@ -8,24 +8,24 @@ module.exports = {
     libraryTarget: "umd",
     umdNamedDefine: true,
     library: "VueTinymce",
-    libraryExport: "VueTinymce"
+    libraryExport: "VueTinymce",
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        use: "vue-loader"
+        use: "vue-loader",
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: "babel-loader"
+        use: "babel-loader",
       },
       {
         test: /\.css$/,
-        use: ["vue-style-loader", "css-loader"]
-      }
-    ]
+        use: ["vue-style-loader", "css-loader"],
+      },
+    ],
   },
   resolve: {
     extensions: [
@@ -36,21 +36,21 @@ module.exports = {
       ".css",
       ".less",
       ".scss",
-      ".json"
-    ]
+      ".json",
+    ],
   },
   externals: {
     vue: {
       commonjs: "vue",
       commonjs2: "vue",
       amd: "vue",
-      root: "Vue"
+      root: "Vue",
     },
-    tinymce: "tinymce"
+    tinymce: "tinymce",
   },
   plugins: [
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin([{ context: "static", from: "**/*" }]),
-    new VueLoaderPlugin()
-  ]
+    new VueLoaderPlugin(),
+  ],
 };

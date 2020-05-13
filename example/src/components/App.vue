@@ -6,17 +6,15 @@
     </button>
     <br />
     <br />
-    <button @click="switchLanguage">
-      点击切换语言，测试更新config
-    </button>
+    <button @click="switchLanguage">点击切换语言，测试更新config</button>
     <br />
     <br />
     <vue-tinymce v-if="show" :content.sync="content" :config="config" />
-    <vue-tinymce
-      :content.sync="content"
-      :config="config"
-      url="https://unpkg.com/tinymce@~5"
-    />
+    <!--    <vue-tinymce-->
+    <!--      :content.sync="content"-->
+    <!--      :config="config"-->
+    <!--      url="https://unpkg.com/tinymce@~5"-->
+    <!--    />-->
     <h2>output</h2>
     <div v-html="content" />
   </div>
@@ -34,12 +32,12 @@ import { VueTinymce } from "../../../src";
 
 export default {
   name: "App",
-  //    components: {VueTinymce},
+  components: { VueTinymce },
   data() {
     return {
       content: "init content",
       show: true,
-      locale: ""
+      locale: "",
     };
   },
   computed: {
@@ -49,7 +47,7 @@ export default {
         language = { language: "en_US" };
       }
       return language;
-    }
+    },
   },
   created() {},
   methods: {
@@ -59,8 +57,8 @@ export default {
       } else {
         this.locale = "en";
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style></style>

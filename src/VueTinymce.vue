@@ -12,25 +12,25 @@ export default {
     // 父组件通过:content.sync同步富文本编辑器内容
     content: {
       type: String,
-      required: true
+      required: true,
     },
     // 触发content同步更新的tinymce Editor Events，其他https://www.tiny.cloud/docs/advanced/events/
     updateEvent: {
       type: String,
-      default: "beforeaddundo undo redo keyup"
+      default: "beforeaddundo undo redo keyup",
     },
     // tinymce依赖文件的cdn url
     url: {
       type: String,
-      default: "https://cdn.jsdelivr.net/npm/tinymce@~5"
+      default: "https://cdn.jsdelivr.net/npm/tinymce@~5",
     },
     // tinymce的init方法的config参数，本组件有默认设置，比如不要toolbar3，可以使用该组件时写上 :config="{toolbar2:''}"
     config: {
       type: Object,
       default() {
         return {};
-      }
-    }
+      },
+    },
   },
   data() {
     return {
@@ -55,8 +55,8 @@ export default {
         toolbar1:
           "code | undo redo | fontsizeselect fontselect | blockquote hr | removeformat link unlink pastetext | pagebreak | charmap emoticons | fullscreen preview save print | insertfile image media template",
         toolbar2:
-          "formatselect | bold italic underline strikethrough | forecolor backcolor | textindent textoutdent | indent outdent | alignleft aligncenter alignright alignjustify | bullist numlist | anchor codesample | ltr rtl"
-      }
+          "formatselect | bold italic underline strikethrough | forecolor backcolor | textindent textoutdent | indent outdent | alignleft aligncenter alignright alignjustify | bullist numlist | anchor codesample | ltr rtl",
+      },
     };
   },
   watch: {
@@ -166,16 +166,17 @@ export default {
         //   }
         // }
         // delete this.tinymceConfig.plugins;
-
-        this.init();
+        this.$nextTick(function () {
+          this.init();
+        });
       },
       immediate: true,
-      deep: true
+      deep: true,
     },
     content: {
       handler: "setContent",
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   beforeDestroy() {
     this.destroy();
@@ -185,7 +186,7 @@ export default {
     tinymce.EditorManager.baseURL = this.url;
   },
   mounted() {
-    this.$nextTick(function() {
+    this.$nextTick(function () {
       if (!this.editor) {
         this.init();
       }
@@ -193,34 +194,36 @@ export default {
   },
   methods: {
     init() {
-      // 编辑器实例初始化
-      const refEditor = this.$refs.editor;
-      if (refEditor) {
-        this.destroy();
-        this.tinymceConfig.target = refEditor;
-        this.tinymceConfig.init_instance_callback = editor => {
-          if (this && this.$refs.editor) {
-            if (
-              /^\[object [^F]*Function\]$/.test(
-                Object.prototype.toString.call(
-                  this.config.init_instance_callback
+      this.$nextTick(function () {
+        // 编辑器实例初始化
+        const refEditor = this.$refs.editor;
+        if (refEditor) {
+          this.destroy();
+          this.tinymceConfig.target = refEditor;
+          this.tinymceConfig.init_instance_callback = (editor) => {
+            if (this && this.$refs.editor) {
+              if (
+                /^\[object [^F]*Function\]$/.test(
+                  Object.prototype.toString.call(
+                    this.config.init_instance_callback
+                  )
                 )
-              )
-            ) {
-              this.config.init_instance_callback(editor);
+              ) {
+                this.config.init_instance_callback(editor);
+              }
+              this.editor = editor;
+              this.setContent();
+              editor.on(
+                this.updateEvent,
+                tinymce.util.Delay.debounce(() => {
+                  this.contentChange();
+                }, 300)
+              );
             }
-            this.editor = editor;
-            this.setContent();
-            editor.on(
-              this.updateEvent,
-              tinymce.util.Delay.debounce(() => {
-                this.contentChange();
-              }, 300)
-            );
-          }
-        };
-        tinymce.init(this.tinymceConfig);
-      }
+          };
+          tinymce.init(this.tinymceConfig);
+        }
+      });
     },
     destroy() {
       try {
@@ -235,7 +238,7 @@ export default {
       }
     },
     setContent() {
-      this.$nextTick(function() {
+      this.$nextTick(function () {
         // 如果编辑器实例已经为真，并且编辑器内容和父组件传入的内容不一样
         if (
           this &&
@@ -248,7 +251,7 @@ export default {
       });
     },
     contentChange() {
-      this.$nextTick(function() {
+      this.$nextTick(function () {
         // 同步到父组件
         if (this && this.$refs.editor && this.editor) {
           const content = this.editor.getContent();
@@ -256,7 +259,7 @@ export default {
           this.$emit("content-change", content);
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>

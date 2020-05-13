@@ -7,24 +7,24 @@ const outputPath = path.resolve(__dirname, "../docs");
 
 const config = {
   output: {
-    path: outputPath
+    path: outputPath,
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        use: "vue-loader"
+        use: "vue-loader",
       },
       {
         test: /\.js$/,
         exclude: /node_modules|dist/,
-        use: "babel-loader"
+        use: "babel-loader",
       },
       {
         test: /\.css$/,
-        use: ["vue-style-loader", "css-loader"]
-      }
-    ]
+        use: ["vue-style-loader", "css-loader"],
+      },
+    ],
   },
   resolve: {
     extensions: [
@@ -35,25 +35,20 @@ const config = {
       ".css",
       ".less",
       ".scss",
-      ".json"
-    ]
+      ".json",
+    ],
   },
   externals: {
-    vue: {
-      commonjs: "vue",
-      commonjs2: "vue",
-      amd: "vue",
-      root: "Vue"
-    },
-    tinymce: "tinymce"
+    vue: "Vue",
+    tinymce: "tinymce",
   },
-  plugins: [new CleanWebpackPlugin(), new VueLoaderPlugin()]
+  plugins: [new CleanWebpackPlugin(), new VueLoaderPlugin()],
 };
 
 module.exports = (env, argv) => {
   const HtmlWebpackPluginOptions = {
     script: "",
-    template: "index.html"
+    template: "index.html",
   };
   if (argv.mode === "production") {
     HtmlWebpackPluginOptions.script = ".min";
