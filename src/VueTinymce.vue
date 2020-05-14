@@ -229,6 +229,10 @@ export default {
       try {
         // 销毁
         if (this && this.$refs.editor && this.editor) {
+          if (this.editor.plugins.autosave) {
+            this.editor.plugins.autosave.removeDraft();
+          }
+          tinymce.PluginManager.remove("autosave");
           this.editor.remove();
           this.editor.destroy();
           this.editor = null;
