@@ -1,6 +1,6 @@
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   output: {
@@ -50,7 +50,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyWebpackPlugin([{ context: "static", from: "**/*" }]),
+    new CopyPlugin({ patterns: [{ context: "static", from: "**/*" }] }),
     new VueLoaderPlugin(),
   ],
 };
