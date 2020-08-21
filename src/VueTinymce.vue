@@ -14,10 +14,10 @@ export default {
       type: String,
       required: true,
     },
-    // 触发content同步更新的tinymce Editor Events，其他https://www.tiny.cloud/docs/advanced/events/
+    // 触发 content 同步更新的 tinymce Editor Events，其他 https://www.tiny.cloud/docs/advanced/events/
     updateEvent: {
       type: String,
-      default: "beforeaddundo undo redo keyup",
+      default: "beforeaddundo undo redo keyup focusout",
     },
     // tinymce依赖文件的cdn url
     url: {
