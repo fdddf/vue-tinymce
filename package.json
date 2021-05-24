@@ -70,11 +70,11 @@
     "webpack-dev-server": "^3.11.0"
   },
   "peerDependencies": {
-    "tinymce": "^5.4.0",
+    "tinymce": "^5.0.0",
     "vue": "^2.6.0"
   },
   "engines": {
-    "node": ">=12",
+    "node": "~12",
     "npm": ">=6"
   },
   "private": false,
