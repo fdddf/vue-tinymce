@@ -1,6 +1,6 @@
 {
-  "name": "@panhezeng/vue-tinymce",
-  "version": "2.3.8",
+  "name": "vue3-tinymce",
+  "version": "2.4.0",
   "description": "A Vue component",
   "keywords": [
     "vuejs",
@@ -8,16 +8,16 @@
     "tinymce",
     "rich text editor"
   ],
-  "homepage": "https://github.com/panhezeng/vue-tinymce#readme",
+  "homepage": "https://github.com/fdddf/vue-tinymce",
   "bugs": {
-    "url": "https://github.com/panhezeng/vue-tinymce/issues",
-    "email": "panhezeng@gmail.com"
+    "url": "https://github.com/fdddf/vue-tinymce/issues",
+    "email": "viporg@126.com"
   },
   "license": "Apache-2.0",
   "author": {
-    "name": "潘何增",
-    "email": "panhezeng@gmail.com",
-    "url": "http://apsay.com/"
+    "name": "Bright",
+    "email": "viporg@126.com",
+    "url": "https://zixi.org"
   },
   "contributors": [],
   "files": [
@@ -31,7 +31,7 @@
   "bin": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/panhezeng/vue-tinymce.git"
+    "url": "git+https://github.com/fdddf/vue-tinymce.git"
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,ts,jsx,vue}'",
@@ -42,7 +42,8 @@
   },
   "config": {},
   "dependencies": {
-    "@babel/runtime": "^7.11.2"
+    "@babel/runtime": "^7.11.2",
+    "@vue/compiler-sfc": "^3.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
@@ -62,19 +63,17 @@
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "tinymce": "^5.4.2",
-    "vue": "^2.6.12",
-    "vue-loader": "^15.9.3",
-    "vue-template-compiler": "^2.6.12",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "vue-loader": "^16.2.0",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^4.0.0-beta.0"
   },
   "peerDependencies": {
     "tinymce": "^5.0.0",
-    "vue": "^2.6.0"
+    "vue": "^3.1.1"
   },
   "engines": {
-    "node": "~12",
+    "node": ">12",
     "npm": ">=6"
   },
   "private": false,

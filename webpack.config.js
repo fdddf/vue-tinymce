@@ -1,4 +1,6 @@
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
+var path = require("path");
+var webpack = require("webpack");
+const { VueLoaderPlugin } = require("vue-loader");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
